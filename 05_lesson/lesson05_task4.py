@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 
-driver = webdriver.Chrome()
+driver = webdriver.Firefox()
 
 try:
     driver.get("http://the-internet.herokuapp.com/login")
@@ -13,9 +13,8 @@ try:
     login_button = driver.find_element(By.CSS_SELECTOR, "button[type='submit']")
     login_button.click()
     time.sleep(2)
-    success_message = driver.find_element(By.CLASS_NAME, "success")
+    success_message = driver.find_element(By.ID, "flash")
     print("Текст с зеленой плашки:", success_message.text)
     time.sleep(2)
-
 finally:
     driver.quit()
